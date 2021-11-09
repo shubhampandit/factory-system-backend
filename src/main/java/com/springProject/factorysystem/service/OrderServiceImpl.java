@@ -19,6 +19,9 @@ public class OrderServiceImpl implements OrderService{
     @Autowired
     private OrderRepository orderRepository;
 
+    @Autowired
+    private IDGeneratorService idGeneratorService;
+
     @Override
     public List<GetOrderRequest> getOrders() {
         List<Orders> orders = orderRepository.findAll();
@@ -39,7 +42,10 @@ public class OrderServiceImpl implements OrderService{
     @Override
     public PostOrderResponse postOrder(PostOrderRequest postOrderRequest) {
         Orders order = new Orders();
-        order.setOrderId(postOrderRequest.getOrderId());
+
+        String uniqueOrderID = idGeneratorService.generateID();
+
+        order.setOrderId(uniqueOrderID);
         order.setCompanyName(postOrderRequest.getCompanyName());
         order.setOrderStatus(OrderConstant.OrderStatus.ORDER_PLACED);
         order.setCompanyAddress(postOrderRequest.getCompanyAddress());
@@ -49,7 +55,7 @@ public class OrderServiceImpl implements OrderService{
         order.setProducts(postOrderRequest.getProducts());
 
         Tasks task = new Tasks();
-        task.setOrderId(postOrderRequest.getOrderId());
+        task.setOrderId(uniqueOrderID);
         task.setAssignedTo(postOrderRequest.getAssignedTo());
         task.setTaskStatus(OrderConstant.OrderStatus.ORDER_PLACED);
         order.setTask(task);

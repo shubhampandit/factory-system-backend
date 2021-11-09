@@ -6,21 +6,12 @@ import java.util.List;
 
 public class PostOrderRequest {
 
-    private String orderId;
     private String companyName;
     private String companyAddress;
     private String contactPerson;
     private int contactNumber;
     private String assignedTo;
     private List<Product> products;
-
-    public String getOrderId() {
-        return orderId;
-    }
-
-    public void setOrderId(String orderId) {
-        this.orderId = orderId;
-    }
 
     public String getCompanyName() {
         return companyName;
