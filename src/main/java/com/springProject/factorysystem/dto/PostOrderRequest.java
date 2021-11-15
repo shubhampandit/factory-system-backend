@@ -9,7 +9,7 @@ public class PostOrderRequest {
     private String companyName;
     private String companyAddress;
     private String contactPerson;
-    private int contactNumber;
+    private String contactNumber;
     private String assignedTo;
     private List<Product> products;
 
@@ -37,11 +37,11 @@ public class PostOrderRequest {
         this.contactPerson = contactPerson;
     }
 
-    public int getContactNumber() {
+    public String getContactNumber() {
         return contactNumber;
     }
 
-    public void setContactNumber(int contactNumber) {
+    public void setContactNumber(String contactNumber) {
         this.contactNumber = contactNumber;
     }
 

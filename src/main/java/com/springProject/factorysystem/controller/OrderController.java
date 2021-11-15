@@ -1,6 +1,7 @@
 package com.springProject.factorysystem.controller;
 
 import com.springProject.factorysystem.dto.GetOrderRequest;
+import com.springProject.factorysystem.dto.GetOrdersRequest;
 import com.springProject.factorysystem.dto.PostOrderRequest;
 import com.springProject.factorysystem.dto.PostOrderResponse;
 import com.springProject.factorysystem.entity.Orders;
@@ -23,8 +24,13 @@ public class OrderController {
     private OrderService orderService;
 
     @GetMapping("/")
-    public List<GetOrderRequest> getOrders(){
+    public List<GetOrdersRequest> getOrders(){
         return orderService.getOrders();
+    }
+
+    @GetMapping("/latest")
+    public List<GetOrdersRequest> getLatestOrders(){
+        return null;
     }
 
     @GetMapping("/{orderId}")

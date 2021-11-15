@@ -1,4 +1,4 @@
-package com.springProject.factorysystem.service;
+package com.springProject.factorysystem.service.idGenerator;
 
 import com.springProject.factorysystem.entity.OrderId;
 import com.springProject.factorysystem.repository.OrderIDRepository;

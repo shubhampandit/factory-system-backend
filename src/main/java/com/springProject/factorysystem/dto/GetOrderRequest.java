@@ -8,17 +8,26 @@ public class GetOrderRequest {
 
     private String orderId;
     private String companyName;
+    private String companyAddress;
+    private String contactName;
+    private String contactNumber;
     private String assignedTo;
     private String orderStatus;
+
+    private List<Product> products;
 
     public GetOrderRequest() {
     }
 
-    public GetOrderRequest(String orderId, String companyName, String assignedTo, String orderStatus) {
+    public GetOrderRequest(String orderId, String companyName, String companyAddress, String contactName, String contactNumber, String assignedTo, String orderStatus, List<Product> products) {
         this.orderId = orderId;
         this.companyName = companyName;
+        this.companyAddress = companyAddress;
+        this.contactName = contactName;
+        this.contactNumber = contactNumber;
         this.assignedTo = assignedTo;
         this.orderStatus = orderStatus;
+        this.products = products;
     }
 
     public String getOrderId() {
@@ -37,6 +46,30 @@ public class GetOrderRequest {
         this.companyName = companyName;
     }
 
+    public String getCompanyAddress() {
+        return companyAddress;
+    }
+
+    public void setCompanyAddress(String companyAddress) {
+        this.companyAddress = companyAddress;
+    }
+
+    public String getContactName() {
+        return contactName;
+    }
+
+    public void setContactName(String contactName) {
+        this.contactName = contactName;
+    }
+
+    public String getContactNumber() {
+        return contactNumber;
+    }
+
+    public void setContactNumber(String contactNumber) {
+        this.contactNumber = contactNumber;
+    }
+
     public String getAssignedTo() {
         return assignedTo;
     }
@@ -51,5 +84,13 @@ public class GetOrderRequest {
 
     public void setOrderStatus(String orderStatus) {
         this.orderStatus = orderStatus;
+    }
+
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
     }
 }

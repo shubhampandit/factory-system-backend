@@ -18,7 +18,7 @@ public class Orders {
     private String orderStatus;
     private String companyAddress;
     private String contactPerson;
-    private int contactNumber;
+    private String contactNumber;
     private String assignedTo;
     private int duration;
 
@@ -33,7 +33,7 @@ public class Orders {
     public Orders() {
     }
 
-    public Orders(String orderId, String companyName, String orderStatus, String companyAddress, String contactPerson, int contactNumber, String assignedTo, int duration, List<Product> products, Tasks task) {
+    public Orders(String orderId, String companyName, String orderStatus, String companyAddress, String contactPerson, String contactNumber, String assignedTo, int duration, List<Product> products, Tasks task) {
         this.orderId = orderId;
         this.companyName = companyName;
         this.orderStatus = orderStatus;
@@ -94,11 +94,11 @@ public class Orders {
         this.contactPerson = contactPerson;
     }
 
-    public int getContactNumber() {
+    public String getContactNumber() {
         return contactNumber;
     }
 
-    public void setContactNumber(int contactNumber) {
+    public void setContactNumber(String contactNumber) {
         this.contactNumber = contactNumber;
     }
 
