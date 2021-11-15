@@ -19,12 +19,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@CrossOrigin(origins = "http://localhost:3000/")
+@CrossOrigin(origins = "*", maxAge = 3600)
 @Controller
 @RequestMapping("/user")
 public class UserController {
@@ -64,23 +62,13 @@ public class UserController {
         return ResponseEntity.ok(new LoginResponse(userDetails.getUsername(), roles.get(0), jwtToken));
     }
 
-    @GetMapping("/signup")
-    public ResponseEntity<Object> getSignup(){
-        SignupRequest req = new SignupRequest("user", "user", Collections.singletonList("ROLE_USER"));
-        return ResponseEntity.ok(req);
-    }
-
     @PostMapping("/signup")
     public ResponseEntity<Object> saveUser(@RequestBody SignupRequest signupRequest){
         List<AppRole> roles = signupRequest.getRoles().stream()
                 .map(AppRole::new)
                 .collect(Collectors.toList());
 
-        AppUser newUser = new AppUser();
-        newUser.setUsername(signupRequest.getUsername());
-        newUser.setPassword(signupRequest.getPassword());
-        newUser.setRoles(roles);
-
+        AppUser newUser = new AppUser(signupRequest.getUsername(), signupRequest.getPassword(), roles);
         appUserService.saveUser(newUser);
 
         return new ResponseEntity<>(null,HttpStatus.CREATED);

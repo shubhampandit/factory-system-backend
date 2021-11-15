@@ -29,7 +29,8 @@ public class ApplicationUserService implements UserDetailsService {
                 .map(role -> new SimpleGrantedAuthority(role.getName()))
                 .collect(Collectors.toList());
 
-        return new ApplicationUser(appUser.getUsername(),
+        return new ApplicationUser(
+                appUser.getUsername(),
                 appUser.getPassword(),
                 simpleGrantedAuthorities,
                 true,

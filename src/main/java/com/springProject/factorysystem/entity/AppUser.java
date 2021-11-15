@@ -22,6 +22,12 @@ public class AppUser {
     public AppUser() {
     }
 
+    public AppUser(String username, String password, List<AppRole> roles) {
+        this.username = username;
+        this.password = password;
+        this.roles = roles;
+    }
+
     public String getId() {
         return id;
     }
