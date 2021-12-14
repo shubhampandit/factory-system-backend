@@ -12,7 +12,6 @@ public class Product {
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
-    @JsonIgnore
     private String id;
     private String productName;
     private int price;

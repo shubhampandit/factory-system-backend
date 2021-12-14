@@ -1,6 +1,5 @@
 package com.springProject.factorysystem.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
@@ -17,7 +16,6 @@ public class Tasks {
     private String id;
     private String orderId;
     private String assignedTo;
-    private String taskStatus;
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "workers2task", referencedColumnName = "id")
@@ -32,10 +30,9 @@ public class Tasks {
     public Tasks() {
     }
 
-    public Tasks(String orderId, String assignedTo, String taskStatus, List<Workers> workers, List<Transport> transports) {
+    public Tasks(String orderId, String assignedTo, List<Workers> workers, List<Transport> transports) {
         this.orderId = orderId;
         this.assignedTo = assignedTo;
-        this.taskStatus = taskStatus;
         this.workers = workers;
         this.transports = transports;
     }
@@ -62,14 +59,6 @@ public class Tasks {
 
     public void setAssignedTo(String assignedTo) {
         this.assignedTo = assignedTo;
-    }
-
-    public String getTaskStatus() {
-        return taskStatus;
-    }
-
-    public void setTaskStatus(String taskStatus) {
-        this.taskStatus = taskStatus;
     }
 
     public List<Workers> getWorkers() {

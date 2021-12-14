@@ -1,9 +1,9 @@
 package com.springProject.factorysystem.repository;
 
-import com.springProject.factorysystem.entity.Tasks;
+import com.springProject.factorysystem.entity.referenceEntities.ExtraCostDetails;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface TaskRepository extends JpaRepository<Tasks, String> {
+public interface ExtraCostRepository extends JpaRepository<ExtraCostDetails, String> {
 }

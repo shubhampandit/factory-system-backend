@@ -6,43 +6,25 @@ import java.util.List;
 
 public class PostOrderRequest {
 
-    private String companyName;
-    private String companyAddress;
-    private String contactPerson;
-    private String contactNumber;
+    private String companyId;
+    private String brokerId;
     private String assignedTo;
     private List<Product> products;
 
-    public String getCompanyName() {
-        return companyName;
+    public String getCompanyId() {
+        return companyId;
     }
 
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
+    public void setCompanyId(String companyId) {
+        this.companyId = companyId;
     }
 
-    public String getCompanyAddress() {
-        return companyAddress;
+    public String getBrokerId() {
+        return brokerId;
     }
 
-    public void setCompanyAddress(String companyAddress) {
-        this.companyAddress = companyAddress;
-    }
-
-    public String getContactPerson() {
-        return contactPerson;
-    }
-
-    public void setContactPerson(String contactPerson) {
-        this.contactPerson = contactPerson;
-    }
-
-    public String getContactNumber() {
-        return contactNumber;
-    }
-
-    public void setContactNumber(String contactNumber) {
-        this.contactNumber = contactNumber;
+    public void setBrokerId(String brokerId) {
+        this.brokerId = brokerId;
     }
 
     public String getAssignedTo() {

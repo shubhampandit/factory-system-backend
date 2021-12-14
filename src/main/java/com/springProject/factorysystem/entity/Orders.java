@@ -14,11 +14,9 @@ public class Orders {
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String id;
     private String orderId;
-    private String companyName;
+    private String companyId;
     private String orderStatus;
-    private String companyAddress;
-    private String contactPerson;
-    private String contactNumber;
+    private String brokerId;
     private String assignedTo;
     private int duration;
 
@@ -33,13 +31,11 @@ public class Orders {
     public Orders() {
     }
 
-    public Orders(String orderId, String companyName, String orderStatus, String companyAddress, String contactPerson, String contactNumber, String assignedTo, int duration, List<Product> products, Tasks task) {
+    public Orders(String orderId, String companyId, String orderStatus, String brokerId, String assignedTo, int duration, List<Product> products, Tasks task) {
         this.orderId = orderId;
-        this.companyName = companyName;
+        this.companyId = companyId;
         this.orderStatus = orderStatus;
-        this.companyAddress = companyAddress;
-        this.contactPerson = contactPerson;
-        this.contactNumber = contactNumber;
+        this.brokerId = brokerId;
         this.assignedTo = assignedTo;
         this.duration = duration;
         this.products = products;
@@ -62,12 +58,12 @@ public class Orders {
         this.orderId = orderId;
     }
 
-    public String getCompanyName() {
-        return companyName;
+    public String getCompanyId() {
+        return companyId;
     }
 
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
+    public void setCompanyId(String companyId) {
+        this.companyId = companyId;
     }
 
     public String getOrderStatus() {
@@ -78,28 +74,12 @@ public class Orders {
         this.orderStatus = orderStatus;
     }
 
-    public String getCompanyAddress() {
-        return companyAddress;
+    public String getBrokerId() {
+        return brokerId;
     }
 
-    public void setCompanyAddress(String companyAddress) {
-        this.companyAddress = companyAddress;
-    }
-
-    public String getContactPerson() {
-        return contactPerson;
-    }
-
-    public void setContactPerson(String contactPerson) {
-        this.contactPerson = contactPerson;
-    }
-
-    public String getContactNumber() {
-        return contactNumber;
-    }
-
-    public void setContactNumber(String contactNumber) {
-        this.contactNumber = contactNumber;
+    public void setBrokerId(String brokerId) {
+        this.brokerId = brokerId;
     }
 
     public String getAssignedTo() {
