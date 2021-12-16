@@ -9,7 +9,7 @@ import com.springProject.factorysystem.entity.Orders;
 import com.springProject.factorysystem.entity.Tasks;
 import com.springProject.factorysystem.entity.referenceEntities.master.CompanyMaster;
 import com.springProject.factorysystem.repository.OrderRepository;
-import com.springProject.factorysystem.service.idGenerator.IDGeneratorService;
+import com.springProject.factorysystem.service.idGeneratorService.IDGeneratorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

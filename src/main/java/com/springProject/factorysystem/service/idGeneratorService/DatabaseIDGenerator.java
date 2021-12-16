@@ -1,4 +1,4 @@
-package com.springProject.factorysystem.service.idGenerator;
+package com.springProject.factorysystem.service.idGeneratorService;
 
 import com.springProject.factorysystem.entity.OrderId;
 import com.springProject.factorysystem.repository.OrderIDRepository;
@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-public class DatabaseIDGenerator implements IDGeneratorService{
+public class DatabaseIDGenerator implements IDGeneratorService {
 
     @Autowired
     private OrderIDRepository orderIDRepository;
@@ -19,7 +19,7 @@ public class DatabaseIDGenerator implements IDGeneratorService{
         String uniqueOrderID = null;
         List<OrderId> orderIdEntries = orderIDRepository.findAll();
 
-        if(orderIdEntries.size() > 0){
+        if (orderIdEntries.size() > 0) {
             OrderId orderId = orderIdEntries.get(0);
             Long uniqueOrderInt = orderId.getLatestId();
             orderId.setLatestId(++uniqueOrderInt);
