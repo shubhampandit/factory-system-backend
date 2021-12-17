@@ -1,0 +1,35 @@
+version: '3.7'
+
+services:
+  mysql-db:
+    image: mysql:latest
+    ports:
+      - "3306:3306"
+    restart: always
+    environment:
+      MYSQL_DATABASE: factory_db
+      MYSQL_USER: user
+      MYSQL_PASSWORD: user
+      MYSQL_ROOT_PASSWORD: password
+    volumes:
+      - db-data:/var/lib/mysql
+    networks:
+      - backend
+
+  factory-system-backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    restart: always
+    depends_on:
+      - mysql-db
+    networks:
+      - backend
+
+volumes:
+  db-data:
+
+networks:
+  backend:
