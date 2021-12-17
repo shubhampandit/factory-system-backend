@@ -1,7 +1,7 @@
 package com.springProject.factorysystem.service;
 
 import com.springProject.factorysystem.dto.PostProductResponse;
-import com.springProject.factorysystem.dto.ProductSearchDTO;
+import com.springProject.factorysystem.dto.GetProductSearchDTO;
 import com.springProject.factorysystem.entity.referenceEntities.master.ProductMaster;
 import com.springProject.factorysystem.repository.ProductMasterRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +21,8 @@ public class ProductMasterServiceImpl implements ProductMasterService {
     @Override
     public ResponseEntity<Object> searchProduct(String searchTerm) {
         List<ProductMaster> products = productMasterRepository.findByNameContaining(searchTerm);
-        List<ProductSearchDTO> response = products.stream().map(product -> {
-            return new ProductSearchDTO(
+        List<GetProductSearchDTO> response = products.stream().map(product -> {
+            return new GetProductSearchDTO(
                     product.getId(),
                     product.getName(),
                     product.getBasicRate(),

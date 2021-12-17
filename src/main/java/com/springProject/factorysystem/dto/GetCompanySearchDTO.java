@@ -1,13 +1,13 @@
 package com.springProject.factorysystem.dto;
 
-public class CompanySearchDTO {
+public class GetCompanySearchDTO {
     private String label;
     private String value;
 
-    public CompanySearchDTO() {
+    public GetCompanySearchDTO() {
     }
 
-    public CompanySearchDTO(String label, String value) {
+    public GetCompanySearchDTO(String label, String value) {
         this.label = label;
         this.value = value;
     }

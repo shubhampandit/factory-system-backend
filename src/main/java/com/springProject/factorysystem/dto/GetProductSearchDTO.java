@@ -1,15 +1,15 @@
 package com.springProject.factorysystem.dto;
 
-public class ProductSearchDTO {
+public class GetProductSearchDTO {
     private String productId;
     private String productName;
     private Double price;
     private Double guessingDiff;
 
-    public ProductSearchDTO() {
+    public GetProductSearchDTO() {
     }
 
-    public ProductSearchDTO(String productId, String productName, Double price, Double guessingDiff) {
+    public GetProductSearchDTO(String productId, String productName, Double price, Double guessingDiff) {
         this.productId = productId;
         this.productName = productName;
         this.price = price;

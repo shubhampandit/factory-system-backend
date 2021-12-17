@@ -1,6 +1,6 @@
 package com.springProject.factorysystem.service;
 
-import com.springProject.factorysystem.dto.CompanySearchDTO;
+import com.springProject.factorysystem.dto.GetCompanySearchDTO;
 import com.springProject.factorysystem.dto.PostCompanyResponse;
 import com.springProject.factorysystem.entity.referenceEntities.master.CompanyMaster;
 import com.springProject.factorysystem.repository.CompanyMasterRepository;
@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class CompanyMasterServiceImpl implements CompanyMasterService{
+public class CompanyMasterServiceImpl implements CompanyMasterService {
 
     @Autowired
     private CompanyMasterRepository companyMasterRepository;
@@ -34,8 +34,8 @@ public class CompanyMasterServiceImpl implements CompanyMasterService{
     @Transactional
     public ResponseEntity<Object> getCompanyDetailByName(String name) {
         List<CompanyMaster> companies = companyMasterRepository.findByNameContaining(name);
-        List<CompanySearchDTO> searchResults = companies.stream().map(company -> {
-            return new CompanySearchDTO(company.getName(), company.getId());
+        List<GetCompanySearchDTO> searchResults = companies.stream().map(company -> {
+            return new GetCompanySearchDTO(company.getName(), company.getId());
         }).collect(Collectors.toList());
         return ResponseEntity.ok(searchResults);
     }

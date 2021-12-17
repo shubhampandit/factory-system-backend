@@ -1,19 +1,15 @@
 package com.springProject.factorysystem.dto;
 
-import java.util.List;
-
-public class SignupRequest {
+public class PostLoginRequest {
     private String username;
     private String password;
-    private List<String> roles;
 
-    public SignupRequest() {
+    public PostLoginRequest() {
     }
 
-    public SignupRequest(String username, String password, List<String> roles) {
+    public PostLoginRequest(String username, String password) {
         this.username = username;
         this.password = password;
-        this.roles = roles;
     }
 
     public String getUsername() {
@@ -30,13 +26,5 @@ public class SignupRequest {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public List<String> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(List<String> roles) {
-        this.roles = roles;
     }
 }

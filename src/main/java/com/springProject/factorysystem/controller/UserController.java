@@ -1,8 +1,8 @@
 package com.springProject.factorysystem.controller;
 
-import com.springProject.factorysystem.dto.LoginRequest;
-import com.springProject.factorysystem.dto.LoginResponse;
-import com.springProject.factorysystem.dto.SignupRequest;
+import com.springProject.factorysystem.dto.PostLoginRequest;
+import com.springProject.factorysystem.dto.PostLoginResponse;
+import com.springProject.factorysystem.dto.PostSignupRequest;
 import com.springProject.factorysystem.entity.AppRole;
 import com.springProject.factorysystem.entity.AppUser;
 import com.springProject.factorysystem.security.auth.ApplicationUserService;
@@ -40,37 +40,37 @@ public class UserController {
     private JwtUtil jwtUtil;
 
     @PostMapping("/login")
-    public ResponseEntity<Object> getUser(@RequestBody LoginRequest loginRequest) throws Exception{
-        try{
+    public ResponseEntity<Object> getUser(@RequestBody PostLoginRequest postLoginRequest) throws Exception {
+        try {
             authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(
-                            loginRequest.getUsername(),
-                            loginRequest.getPassword()
+                            postLoginRequest.getUsername(),
+                            postLoginRequest.getPassword()
                     )
             );
-        } catch (BadCredentialsException e){
+        } catch (BadCredentialsException e) {
             throw new Exception("Incorrect Username and Password", e);
         }
 
-        final UserDetails userDetails = applicationUserService.loadUserByUsername(loginRequest.getUsername());
+        final UserDetails userDetails = applicationUserService.loadUserByUsername(postLoginRequest.getUsername());
         final String jwtToken = jwtUtil.generateToken(userDetails);
 
         List<String> roles = userDetails.getAuthorities().stream()
                 .map(GrantedAuthority::getAuthority)
                 .collect(Collectors.toList());
 
-        return ResponseEntity.ok(new LoginResponse(userDetails.getUsername(), roles.get(0), jwtToken));
+        return ResponseEntity.ok(new PostLoginResponse(userDetails.getUsername(), roles.get(0), jwtToken));
     }
 
     @PostMapping("/signup")
-    public ResponseEntity<Object> saveUser(@RequestBody SignupRequest signupRequest){
-        List<AppRole> roles = signupRequest.getRoles().stream()
+    public ResponseEntity<Object> saveUser(@RequestBody PostSignupRequest postSignupRequest) {
+        List<AppRole> roles = postSignupRequest.getRoles().stream()
                 .map(AppRole::new)
                 .collect(Collectors.toList());
 
-        AppUser newUser = new AppUser(signupRequest.getUsername(), signupRequest.getPassword(), roles);
+        AppUser newUser = new AppUser(postSignupRequest.getUsername(), postSignupRequest.getPassword(), roles);
         appUserService.saveUser(newUser);
 
-        return new ResponseEntity<>(null,HttpStatus.CREATED);
+        return new ResponseEntity<>(null, HttpStatus.CREATED);
     }
 }

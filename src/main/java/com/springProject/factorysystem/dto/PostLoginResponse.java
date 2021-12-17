@@ -1,14 +1,14 @@
 package com.springProject.factorysystem.dto;
 
-public class LoginResponse {
+public class PostLoginResponse {
     private String userName;
     private String role;
     private String jwt;
 
-    public LoginResponse() {
+    public PostLoginResponse() {
     }
 
-    public LoginResponse(String userName, String role, String jwt) {
+    public PostLoginResponse(String userName, String role, String jwt) {
         this.userName = userName;
         this.role = role;
         this.jwt = jwt;
