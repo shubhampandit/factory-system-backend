@@ -1,11 +1,11 @@
 package com.springProject.factorysystem.error;
 
 public class EntityNotFoundException extends RuntimeException {
-    private EntityNotFoundException() {
+    public EntityNotFoundException() {
         super();
     }
 
-    private EntityNotFoundException(String message) {
+    public EntityNotFoundException(String message) {
         super(message);
     }
 }

@@ -8,6 +8,7 @@ import com.springProject.factorysystem.dto.PostOrderResponse;
 import com.springProject.factorysystem.entity.Orders;
 import com.springProject.factorysystem.entity.Tasks;
 import com.springProject.factorysystem.entity.referenceEntities.master.CompanyMaster;
+import com.springProject.factorysystem.error.EntityNotFoundException;
 import com.springProject.factorysystem.repository.OrderRepository;
 import com.springProject.factorysystem.service.idGeneratorService.IDGeneratorService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +44,9 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public GetOrderRequest getOrder(String orderId) {
         Orders order = orderRepository.findByOrderId(orderId);
+        if (null == order) {
+            throw new EntityNotFoundException(orderId + " not found in the Orders Database.");
+        }
         CompanyMaster company = companyMasterService.getCompanyById(order.getCompanyId());
         return new GetOrderRequest(order.getOrderId(), company.getName(), company.getAddressDetails().getAddress(), company.getContactDetails().getContactPerson(), company.getContactDetails().getMobileNumber(), order.getAssignedTo(), order.getOrderStatus(), order.getProducts());
     }
